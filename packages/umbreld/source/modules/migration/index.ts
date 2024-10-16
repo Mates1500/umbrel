@@ -18,11 +18,6 @@ class Migration {
 
 	// One off migration for legacy custom Linux install users
 	async migrateLegacyLinuxData() {
-		const {deviceId} = await detectDevice()
-
-		// Only run this on unknown devices AKA not a Home or a Pi
-		if (deviceId !== 'unknown') return
-
 		// Don't do anything if a user has already been registered
 		if (await this.umbreld.user.exists()) return
 
